@@ -13,16 +13,16 @@ import { ButtonLink } from "./components/button-link";
 
 export function App() {
   const { theme, toggleTheme } = useTheme();
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     async function getUserData() {
       try {
         const response = await api.get("/users/Fil1p3");
-
+        console.log(response.data);
         setUser(response.data);
       } catch (error) {
-        console.log("Erro ao bsucar os dados do usuário", error);
+        console.log("Erro ao buscar os dados do usuário", error);
       }
     }
 
@@ -32,8 +32,16 @@ export function App() {
   return (
     <div className={`container ${theme}`}>
       <div className="profile">
-        <img src={user.avatar_url} alt="" className="img-profile" />
-        <p>@{user.login}</p>
+        {user.avatar_url ? (
+          <img
+            src={user.avatar_url}
+            alt="Foto de perfil"
+            className="img-profile"
+          />
+        ) : (
+          <p>Carregando...</p>
+        )}
+        {user.login ? <p>@{user.login}</p> : <p>Carregando...</p>}
       </div>
 
       <div className="toggle-container" onClick={toggleTheme}>
@@ -62,16 +70,32 @@ export function App() {
       </div>
 
       <div className="social-media">
-        <a href="https://github.com/Fil1p3/dev-links" target="_blank">
+        <a
+          href={`https://github.com/${user.login}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <GithubLogo size={24} />
         </a>
-        <a href="https://www.instagram.com/filipe_fg.kk/" target="_blank">
+        <a
+          href="https://www.instagram.com/filipe_fg.kk/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <InstagramLogo size={24} />
         </a>
-        <a href="https://www.youtube.com/@filipegabriel6490" target="_blank">
+        <a
+          href="https://www.youtube.com/@filipegabriel6490"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <YoutubeLogo size={24} />
         </a>
-        <a href="https://www.linkedin.com/" target="_blank">
+        <a
+          href="https://www.linkedin.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <LinkedinLogo size={24} />
         </a>
       </div>
