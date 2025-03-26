@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  /* DARK */
+  --white: #fff;
+  --stroke-dark: rgba(255, 255, 255, 0.5);
+  --surface-dark: rgba(255, 255, 255, 0.1);
+  --surface-hover-dark: rgba(255, 255, 255, 0.05);
+  --hightlight-dark: rgba(255, 255, 255, 0.2);
+
+  /* LIGHT */
+  --black: #000;
+  --stoke: rgba(0, 0, 0, 0.5);
+  --surface: rgba(0, 0, 0, 0.05);
+  --surface-hover: rgba(0, 0, 0, 0.02);
+  --hightlight: rgba(0, 0, 0, 0.1);
+
+  --text-md: 16px/24px 500;
+  --text-sm: 14px/24px 400;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.container.dark {
+  background: url("./assets/bg-desktop.jpg") center/cover no-repeat;
+}
+
+.container.light {
+  background: url("./assets/bg-desktop-light.jpg") center/cover no-repeat;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.img-profile {
+  width: 112px;
+  height: 112px;
+  border-radius: 100%;
+  border: 2px solid var(--stroke-dark);
+}
+
+.profile p {
+  color: var(--white);
+  font: var(--text-md);
+}
+
+.toggle-container {
+  width: 54px;
+  height: 24px;
+  border: 1px solid var(--stroke-dark);
+  border-radius: 99px;
+  background-color: var(--surface-dark);
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+
+  margin: 24px 0;
+}
+
+.container .light {
+  background: url("./assets/bg-desktop-light.jpg") center/cover no-repeat;
+}
+
+.toggle-switch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--white);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dark .toggle-switch {
+  transform: translateY(-50%) translateX(25px);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.social-media {
+  padding: 24px 0;
+  display: flex;
+  gap: 16px;
+}
+
+.social-media a {
+  color: var(--white);
+}
